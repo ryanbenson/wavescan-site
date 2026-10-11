@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Wavescan · Scan your Wuthering Waves echoes</title>
+    <meta name="description" content="Wavescan is a free app for Windows and Mac. It reads the echoes in your Wuthering Waves bag and sends them to Wuthering Tools in one click." />
+    <meta property="og:title" content="Wavescan" />
+    <meta property="og:description" content="Scan your Wuthering Waves echoes. Skip the typing. Free, open source, and your scan stays on your computer." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wavescan.app" />
+    <meta name="theme-color" content="#0a1016" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply a saved theme before the first paint so the page doesn't flash.
+      try {
+        var t = localStorage.getItem("ws-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<script setup lang="ts">
+import AppIcon from "../components/AppIcon.vue";
+import { releases, roadToV01 } from "../roadmap";
+
+const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as const;
+</script>
+
+<template>
+  <section id="roadmap" class="section" aria-labelledby="road-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Roadmap</span>
+        <h2 id="road-title">What's coming</h2>
+        <p class="lede">We're starting with echoes, because typing them in takes the longest. Characters and weapons come next.</p>
+      </div>
+
+      <ol class="road">
+        <li v-for="r in releases" :key="r.version" :class="{ now: r.current }">
+          <span class="pin"></span>
+          <div class="ver">
+            {{ r.version }}<span v-if="r.current" class="tag">In testing</span>
+          </div>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.text }}</p>
+        </li>
+      </ol>
+
+      <div class="progress frame">
+        <div>
+          <h3>Road to v0.1</h3>
+          <p>What's left before the first public release. Updated as we go.</p>
+        </div>
+        <ul class="checks">
+          <li v-for="t in roadToV01" :key="t.text" :class="t.state">
+            <span class="box" :title="stateLabel[t.state]"><AppIcon v-if="t.state === 'done'" name="check" :size="12" /></span>
+            <span>
+              <span class="sr">{{ stateLabel[t.state] }}: </span>{{ t.text }}
+              <small v-if="t.detail">{{ t.detail }}</small>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.road {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+}
+.road::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 19px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 18%, var(--line) 18%);
+}
+.road > li {
+  position: relative;
+  padding: 52px 20px 0 0;
+}
+.pin {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  transform: rotate(45deg);
+}
+.now .pin {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 6px var(--accent-soft);
+}
+.ver {
+  font: 700 1.6rem var(--display);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.now .ver {
+  color: var(--accent);
+}
+.ver .tag {
+  font-size: 0.62rem;
+}
+.road h3 {
+  font-size: 1.05rem;
+  margin: 6px 0;
+}
+.road p {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+@media (max-width: 860px) {
+  .road {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-left: 36px;
+  }
+  .road::before {
+    left: 9px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--accent) 0 22%, var(--line) 22%);
+  }
+  .road > li {
+    padding: 0;
+  }
+  .pin {
+    left: -36px;
+    top: 6px;
+  }
+}
+.progress {
+  margin-top: 44px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 28px;
+}
+@media (max-width: 820px) {
+  .progress {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.progress h3 {
+  font-size: 1.15rem;
+}
+.progress > div > p {
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+.checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 0.96rem;
+}
+.checks li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+.box {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--line);
+  margin-top: 3px;
+  display: grid;
+  place-items: center;
+}
+.done .box {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: var(--bg);
+}
+.doing .box {
+  border-color: var(--amber);
+}
+.doing .box::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--amber);
+}
+small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+</style>
