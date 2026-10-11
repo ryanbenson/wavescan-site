@@ -1,0 +1,4 @@
+# Check text files out with LF on every OS, matching the app repo. The repo stores LF, and
+# npm and the editors write LF, so a Windows checkout with core.autocrlf=true doesn't show
+# files as modified or warn about CRLF on every commit.
+* text=auto eol=lf
