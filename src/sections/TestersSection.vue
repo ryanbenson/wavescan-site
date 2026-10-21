@@ -15,7 +15,7 @@ import { links } from "../links";
           <li>Low-level echoes and echoes with more than one possible set</li>
         </ul>
       </div>
-      <div class="card frame">
+      <div class="card panel">
         <h3>How testing works</h3>
         <p>Download the latest test build, run Diagnostics, do a short scan and post the report in the Discord testing thread. It takes about 15 minutes.</p>
         <div class="cta-row">

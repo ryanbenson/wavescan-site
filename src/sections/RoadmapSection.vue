@@ -25,7 +25,7 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
         </li>
       </ol>
 
-      <div class="progress frame">
+      <div class="progress panel">
         <div>
           <h3>Road to v0.1</h3>
           <p>What's left before the first public release. Updated as we go.</p>
@@ -60,7 +60,7 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
   right: 0;
   top: 19px;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent) 0 18%, var(--line) 18%);
+  background: linear-gradient(90deg, var(--gold) 0 18%, var(--line) 18%);
 }
 .road > li {
   position: relative;
@@ -68,18 +68,17 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
 }
 .pin {
   position: absolute;
-  top: 10px;
-  left: 0;
-  width: 20px;
-  height: 20px;
+  top: 13px;
+  left: 4px;
+  width: 22px;
+  height: 14px;
   background: var(--bg);
   border: 2px solid var(--line);
-  transform: rotate(45deg);
+  transform: skewX(var(--slant));
 }
 .now .pin {
-  border-color: var(--accent);
-  background: var(--accent);
-  box-shadow: 0 0 0 6px var(--accent-soft);
+  border-color: var(--gold);
+  background: var(--gold);
 }
 .ver {
   font: 700 1.6rem var(--display);
@@ -89,7 +88,7 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
   flex-wrap: wrap;
 }
 .now .ver {
-  color: var(--accent);
+  color: var(--gold);
 }
 .ver .tag {
   font-size: 0.62rem;
@@ -115,14 +114,15 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
     bottom: 0;
     width: 2px;
     height: auto;
-    background: linear-gradient(180deg, var(--accent) 0 22%, var(--line) 22%);
+    background: linear-gradient(180deg, var(--gold) 0 22%, var(--line) 22%);
   }
   .road > li {
     padding: 0;
   }
   .pin {
     left: -36px;
-    top: 6px;
+    top: 8px;
+    width: 20px;
   }
 }
 .progress {
@@ -164,6 +164,7 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
   height: 18px;
   border: 1.5px solid var(--line);
   margin-top: 3px;
+  border-radius: var(--r-sm);
   display: grid;
   place-items: center;
 }
@@ -173,13 +174,13 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
   color: var(--bg);
 }
 .doing .box {
-  border-color: var(--amber);
+  border-color: var(--check);
 }
 .doing .box::after {
   content: "";
   width: 8px;
   height: 8px;
-  background: var(--amber);
+  background: var(--check);
 }
 small {
   display: block;

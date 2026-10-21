@@ -24,7 +24,7 @@ const nodes = [
       <ol class="flow">
         <template v-for="(n, i) in nodes" :key="n.title">
           <li v-if="i > 0" class="link" aria-hidden="true"><AppIcon name="arrow" :width="56" :size="24" /></li>
-          <li class="node frame" :class="{ main: n.main }">
+          <li class="node panel" :class="{ lead: n.main }">
             <span class="where">{{ n.where }}</span>
             <h3>{{ n.title }}</h3>
             <p>{{ n.text }}</p>
@@ -78,13 +78,10 @@ const nodes = [
   color: var(--muted);
   font-size: 0.94rem;
 }
-.node.main {
-  border-color: var(--accent);
-}
 .link {
   display: grid;
   place-items: center;
-  color: var(--accent);
+  color: var(--gold);
 }
 @media (max-width: 820px) {
   .flow {

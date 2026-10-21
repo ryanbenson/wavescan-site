@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AppIcon from "../components/AppIcon.vue";
+
 /**
  * Until the first signed release, the buttons say "Coming soon". When v0.1 ships, set `href`
  * to the matching file on the GitHub Releases page.
@@ -26,7 +28,8 @@ const downloads: { os: string; text: string; href: string | null }[] = [
         <p class="lede">Wavescan is still being tested. Signed downloads will appear here when version 0.1 is ready.</p>
       </div>
       <div class="grid">
-        <div v-for="d in downloads" :key="d.os" class="card frame">
+        <div v-for="d in downloads" :key="d.os" class="card panel">
+          <AppIcon name="logo" :size="128" class="os-mark" />
           <h3>{{ d.os }}</h3>
           <p>{{ d.text }}</p>
           <a v-if="d.href" class="btn btn-primary" :href="d.href" rel="noopener"><span>Download for {{ d.os }}</span></a>
@@ -42,7 +45,7 @@ const downloads: { os: string; text: string; href: string | null }[] = [
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
+  gap: var(--gap);
 }
 @media (max-width: 820px) {
   .grid {
@@ -53,6 +56,20 @@ const downloads: { os: string; text: string; href: string | null }[] = [
   display: grid;
   gap: 10px;
   align-content: start;
+  overflow: hidden;
+}
+.card h3 {
+  font-size: 1.4rem;
+}
+/* A faint cube in the corner of each download card. */
+.os-mark {
+  position: absolute;
+  right: -20px;
+  bottom: -24px;
+  color: var(--surface-2);
+}
+.card > :not(.os-mark) {
+  position: relative;
 }
 .btn {
   margin-top: 6px;

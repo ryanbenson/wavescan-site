@@ -28,7 +28,7 @@
             <summary>Some values are wrong</summary>
             <div class="ans">
               <p>
-                Fix them on the Review screen before you export. Click a value marked <span class="flag">CHECK</span>, then pick what the game shows, or press
+                Fix them on the Review screen before you export. Click a value marked <span class="flag">check</span>, then pick what the game shows, or press
                 <span class="ui">Looks right</span>.
               </p>
               <p>Then press <span class="ui">Report this misread</span>. It helps us make the reader better.</p>
@@ -62,7 +62,7 @@
           </details>
         </div>
 
-        <div class="diag frame">
+        <div class="diag panel">
           <h3>Check your setup with Diagnostics</h3>
           <p>
             Open <span class="ui">Diagnostics</span> in the app with an echo selected. It checks that Wavescan can find, capture and read the game, and shows exactly
@@ -107,7 +107,7 @@
 }
 .shot {
   margin-top: 16px;
-  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   background: var(--bg-2);
   aspect-ratio: 16 / 9;
   max-width: 100%;
@@ -127,7 +127,7 @@
 }
 .box {
   position: absolute;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid var(--gold);
 }
 .mask {
   position: absolute;

@@ -4,9 +4,9 @@ import AppIcon from "../components/AppIcon.vue";
 import { links } from "../links";
 
 type Mode = "watch" | "auto";
-const modes: { id: Mode; label: string; tag: string }[] = [
-  { id: "watch", label: "Watch mode", tag: "Recommended" },
-  { id: "auto", label: "Auto mode", tag: "Optional" },
+const modes: { id: Mode; label: string; tag: string; tone: "gold" | "muted" }[] = [
+  { id: "watch", label: "Watch mode", tag: "Recommended", tone: "gold" },
+  { id: "auto", label: "Auto mode", tag: "Optional", tone: "muted" },
 ];
 const active = ref<Mode>("watch");
 const tabEls = ref<HTMLButtonElement[]>([]);
@@ -46,7 +46,7 @@ function onKey(e: KeyboardEvent, index: number) {
           @click="active = m.id"
           @keydown="onKey($event, i)"
         >
-          {{ m.label }} <span class="tag">{{ m.tag }}</span>
+          {{ m.label }} <span class="tag" :class="m.tone">{{ m.tag }}</span>
         </button>
       </div>
 
@@ -79,7 +79,7 @@ function onKey(e: KeyboardEvent, index: number) {
             <div>
               <h3>Review</h3>
               <p>
-                Press <span class="ui">Stop and review</span>. Anything Wavescan wasn't sure about is marked <span class="flag">CHECK</span>. Press
+                Press <span class="ui">Stop and review</span>. Anything Wavescan wasn't sure about is marked <span class="flag">check</span>. Press
                 <span class="ui">Check them now</span> to fix them one by one. It only offers values the game can really roll.
               </p>
             </div>
@@ -92,18 +92,18 @@ function onKey(e: KeyboardEvent, index: number) {
           </li>
         </ol>
         <div class="side">
-          <div class="card frame">
+          <div class="card panel lead">
             <h3>Why we recommend Watch mode</h3>
             <p>Watch mode only looks at the game. It never clicks or types anything for you, so the Fair Play concerns of Auto mode don't apply.</p>
           </div>
-          <div class="card frame">
+          <div class="card panel">
             <h3>Why does it ask for my in-game name?</h3>
             <p>
               For your main character, the game shows the name <i>you</i> chose instead of “Rover”. Wavescan needs your name to know which echoes Rover is wearing.
               Your name stays on your computer. The scan just says “Rover”.
             </p>
           </div>
-          <div class="card frame">
+          <div class="card panel">
             <h3>Closed it by mistake?</h3>
             <p>Wavescan keeps your current scan on your computer. Next time you open it, you can carry on where you stopped.</p>
           </div>
@@ -162,7 +162,7 @@ function onKey(e: KeyboardEvent, index: number) {
               <b>there is some risk to your account</b>. Watch mode doesn't have this risk.
             </p>
           </div>
-          <div class="card frame">
+          <div class="card panel">
             <h3>One small gap</h3>
             <p>
               If two echoes next to each other look exactly the same (same echo, same main stat, no substats yet), Wavescan only reads the first. This mostly happens
@@ -178,28 +178,57 @@ function onKey(e: KeyboardEvent, index: number) {
 <style scoped>
 .tabs {
   display: inline-flex;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  padding: 4px;
-  gap: 4px;
+  gap: 28px;
+  border-bottom: 1px solid var(--line);
   margin-bottom: 28px;
+  max-width: 100%;
   flex-wrap: wrap;
 }
 .tab {
-  font: 600 1rem var(--display);
+  font: 600 1.05rem var(--display);
   letter-spacing: 0.02em;
   background: none;
   border: 0;
   color: var(--muted);
-  padding: 0.6rem 1.1rem;
+  padding: 6px 0 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  position: relative;
 }
+/* On phones both tabs share one row, with the tag under the name. */
+@media (max-width: 480px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+  .tab {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+.tab:hover,
 .tab[aria-selected="true"] {
-  background: var(--accent);
-  color: var(--accent-ink);
+  color: var(--fg);
+}
+.tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+}
+.tag.gold {
+  color: var(--gold);
+}
+.tag.muted {
+  color: var(--muted);
 }
 .mode {
   display: grid;
@@ -217,40 +246,36 @@ function onKey(e: KeyboardEvent, index: number) {
   margin: 0;
   padding: 0;
   counter-reset: step;
+  display: grid;
+  gap: var(--gap);
 }
 .steps > li {
   counter-increment: step;
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
-  gap: 16px;
-  padding-bottom: 22px;
-  position: relative;
+  gap: 14px;
+  padding: 16px 18px 16px 12px;
+  background: var(--surface);
+  border-radius: var(--r-sm);
 }
+/* The step number sits on a slanted block, like the app's main button. */
 .steps > li::before {
   content: counter(step);
-  font: 700 1.15rem var(--display);
+  font: 700 1.05rem var(--display);
   width: 40px;
-  height: 40px;
+  height: 30px;
   display: grid;
   place-items: center;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  background: var(--bg);
-  position: relative;
-  z-index: 1;
+  color: var(--on-primary);
+  background: linear-gradient(var(--primary), var(--primary)) center / 30px 100% no-repeat;
+  transform: skewX(var(--slant));
 }
-.steps > li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 20px;
-  top: 40px;
-  bottom: 0;
-  width: 1px;
-  background: var(--line);
+.steps > li > div {
+  min-width: 0;
 }
 .steps h3 {
   font-size: 1.1rem;
-  margin: 8px 0 4px;
+  margin: 3px 0 4px;
 }
 .steps p {
   color: var(--muted);
@@ -259,21 +284,21 @@ function onKey(e: KeyboardEvent, index: number) {
   margin-top: 8px;
   font-size: 0.92rem;
   color: var(--fg);
-  background: var(--surface);
-  border-left: 2px solid var(--violet);
-  padding: 0.45rem 0.7rem;
+  border-left: 2px solid var(--checked);
+  padding: 0.15rem 0 0.15rem 0.7rem;
 }
 .side {
   display: grid;
-  gap: 16px;
+  gap: var(--gap);
 }
 .warnbox {
-  border: 1px solid color-mix(in srgb, var(--amber) 55%, transparent);
-  background: var(--amber-soft);
+  background: color-mix(in srgb, var(--check) 12%, var(--surface));
+  border-left: 3px solid var(--check);
+  border-radius: var(--r-sm);
   padding: 20px;
 }
 .warnbox h3 {
-  color: var(--amber);
+  color: var(--check);
   display: flex;
   gap: 0.5rem;
   align-items: center;

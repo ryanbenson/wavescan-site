@@ -26,7 +26,7 @@ import { links } from "../links";
 
 <style scoped>
 footer {
-  border-top: 1px solid var(--line);
+  background: var(--bg-2);
   padding-block: 40px 56px;
   font-size: 0.92rem;
   color: var(--muted);

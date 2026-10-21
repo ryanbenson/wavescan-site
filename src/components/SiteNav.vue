@@ -78,7 +78,7 @@ ul a:hover {
   display: grid;
   place-items: center;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: var(--r-sm);
 }
 .theme-btn:hover {
   color: var(--fg);
@@ -90,6 +90,15 @@ ul a:hover {
   }
   .theme-btn {
     margin-left: auto;
+  }
+}
+@media (max-width: 440px) {
+  .wrap {
+    gap: 12px;
+  }
+  .btn {
+    padding: 0 1.3rem;
+    font-size: 0.88rem;
   }
 }
 </style>

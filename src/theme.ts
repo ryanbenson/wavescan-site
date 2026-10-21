@@ -5,11 +5,10 @@ const KEY = "ws-theme";
 
 function current(): Theme {
   const set = document.documentElement.getAttribute("data-theme");
-  if (set === "light" || set === "dark") return set;
-  return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  return set === "light" ? "light" : "dark";
 }
 
-/** The page is dark unless the system or the visitor picks light. index.html applies a saved choice before paint. */
+/** The page is dark, like the game, unless the visitor picks light. index.html applies a saved choice before paint. */
 export function useTheme() {
   const theme = ref<Theme>(current());
 

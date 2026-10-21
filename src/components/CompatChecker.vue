@@ -14,7 +14,7 @@ const look: Record<Status, { icon: IconName; cls: string }> = {
 </script>
 
 <template>
-  <div class="checker frame">
+  <div class="checker panel">
     <h3>Quick check</h3>
     <p class="muted intro">Pick your setup and we'll tell you if Wavescan will work.</p>
     <form @submit.prevent>
@@ -83,7 +83,7 @@ select {
   border: 1px solid var(--line);
   padding: 0.6rem 0.7rem;
   width: 100%;
-  border-radius: 0;
+  border-radius: var(--r-sm);
 }
 .verdict {
   margin-top: 18px;

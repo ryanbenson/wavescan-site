@@ -45,6 +45,8 @@ async function copy() {
   display: flex;
   align-items: stretch;
   border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
   background: var(--bg-2);
   margin-top: 10px;
 }
@@ -71,13 +73,13 @@ button {
   background: none;
   border: 0;
   border-left: 1px solid var(--line);
-  color: var(--accent);
+  color: var(--fg);
   padding: 0 0.9rem;
   cursor: pointer;
   font: 600 0.8rem var(--display);
   min-width: 76px;
 }
 button:hover {
-  background: var(--accent-soft);
+  background: var(--surface-2);
 }
 </style>
