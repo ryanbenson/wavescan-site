@@ -19,8 +19,8 @@ const facts = [
 
 <style scoped>
 .facts {
-  border-top: 1px solid var(--line);
   background: var(--bg-2);
+  padding-block: var(--gap);
 }
 ul {
   list-style: none;
@@ -28,18 +28,29 @@ ul {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
 }
 li {
-  padding: 22px 18px;
-  border-left: 1px solid var(--line);
+  position: relative;
+  padding: 20px 18px;
+  background: var(--bg);
+  border-radius: var(--r-sm);
   display: grid;
   gap: 4px;
 }
-li:first-child {
-  border-left: 0;
+li::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 10px;
+  height: 6px;
+  background: var(--line);
+  transform: skewX(var(--slant));
 }
 b {
   font-family: var(--display);
+  font-weight: 600;
   font-size: 1.15rem;
 }
 span {
@@ -50,23 +61,10 @@ span {
   ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  li:nth-child(3) {
-    border-left: 0;
-  }
-  li:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-  }
 }
 @media (max-width: 420px) {
   ul {
     grid-template-columns: minmax(0, 1fr);
-  }
-  li {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-  li:first-child {
-    border-top: 0;
   }
 }
 </style>

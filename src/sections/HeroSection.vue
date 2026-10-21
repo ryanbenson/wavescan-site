@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import EchoPanel from "../components/EchoPanel.vue";
-import WaveCanvas from "../components/WaveCanvas.vue";
+import HeroMark from "../components/HeroMark.vue";
 </script>
 
 <template>
   <section class="hero" aria-labelledby="hero-title">
-    <WaveCanvas />
+    <HeroMark />
     <div class="wrap">
       <div>
-        <span class="status"><i></i>In testing · v0.1 coming soon</span>
+        <span class="tag status"><i></i>In testing · v0.1 coming soon</span>
         <h1 id="hero-title">Scan your echoes.<em>Skip the typing.</em></h1>
         <p class="lede">
           Wavescan is a free app for Windows and Mac. It reads the echoes in your Wuthering Waves bag and sends them to Wuthering Tools in one click. No more typing
@@ -45,43 +45,37 @@ import WaveCanvas from "../components/WaveCanvas.vue";
   }
 }
 .status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-family: var(--mono);
+  color: var(--check);
   font-size: 0.8rem;
-  color: var(--amber);
-  border: 1px solid color-mix(in srgb, var(--amber) 40%, transparent);
-  background: var(--amber-soft);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
+  padding-block: 0.25rem;
   max-width: 100%;
+  white-space: normal;
+}
+.status::before {
+  background: var(--check-soft);
 }
 .status i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--amber);
-  animation: ping 2s infinite;
+  width: 10px;
+  height: 7px;
+  flex: none;
+  background: currentColor;
+  transform: skewX(var(--slant));
+  animation: blink 1.6s steps(2) infinite;
 }
-@keyframes ping {
-  0% {
-    box-shadow: 0 0 0 0 var(--amber);
-  }
-  70%,
-  100% {
-    box-shadow: 0 0 0 8px transparent;
+@keyframes blink {
+  50% {
+    opacity: 0.25;
   }
 }
 h1 {
   font-size: var(--step-4);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   margin-top: 18px;
 }
 h1 em {
   font-style: normal;
-  color: var(--accent);
+  color: var(--gold);
   display: block;
 }
 .lede {

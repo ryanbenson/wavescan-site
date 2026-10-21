@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppIcon from "../components/AppIcon.vue";
 import CopyCommand from "../components/CopyCommand.vue";
 </script>
 
@@ -13,25 +12,25 @@ import CopyCommand from "../components/CopyCommand.vue";
       </div>
 
       <div class="cols">
-        <div class="card frame yes">
-          <h3>What Wavescan does</h3>
+        <div class="card panel yes">
+          <h3><span class="tag">does</span>What Wavescan does</h3>
           <ul class="plist">
-            <li><AppIcon name="check" class="ok" /><span>Takes pictures of <b>only the Wuthering Waves window</b>. Never your whole screen or other apps.</span></li>
-            <li><AppIcon name="check" class="ok" /><span>Reads the text in those pictures <b>on your computer</b>. Nothing is uploaded.</span></li>
+            <li><span class="mark ok"></span><span>Takes pictures of <b>only the Wuthering Waves window</b>. Never your whole screen or other apps.</span></li>
+            <li><span class="mark ok"></span><span>Reads the text in those pictures <b>on your computer</b>. Nothing is uploaded.</span></li>
             <li>
-              <AppIcon name="check" class="ok" /><span>Keeps your current scan (stats only, no pictures) so you don't lose it. <span class="ui">Clear this scan</span> deletes it.</span>
+              <span class="mark ok"></span><span>Keeps your current scan (stats only, no pictures) so you don't lose it. <span class="ui">Clear this scan</span> deletes it.</span>
             </li>
-            <li><AppIcon name="check" class="ok" /><span>In Auto mode only: sends clicks and scrolls to the game window, and listens for <kbd>F8</kbd> so you can stop it.</span></li>
+            <li><span class="mark ok"></span><span>In Auto mode only: sends clicks and scrolls to the game window, and listens for <kbd>F8</kbd> so you can stop it.</span></li>
           </ul>
         </div>
-        <div class="card frame never">
-          <h3>What Wavescan never does</h3>
+        <div class="card panel never">
+          <h3><span class="tag">never</span>What Wavescan never does</h3>
           <ul class="plist">
-            <li><AppIcon name="x" class="no" /><span>Never reads or changes the game's memory or files. Nothing is injected into the game.</span></li>
-            <li><AppIcon name="x" class="no" /><span>Never collects your data. No accounts, no analytics, no tracking.</span></li>
-            <li><AppIcon name="x" class="no" /><span>Never uploads your scan. It stays on your computer until <i>you</i> paste it into Wuthering Tools.</span></li>
-            <li><AppIcon name="x" class="no" /><span>Never reads your <b>User ID</b>. It skips that corner of the screen and blacks it out of any picture.</span></li>
-            <li><AppIcon name="x" class="no" /><span>Never saves screenshots, unless you turn on “Save debug frames” yourself.</span></li>
+            <li><span class="mark no"></span><span>Never reads or changes the game's memory or files. Nothing is injected into the game.</span></li>
+            <li><span class="mark no"></span><span>Never collects your data. No accounts, no analytics, no tracking.</span></li>
+            <li><span class="mark no"></span><span>Never uploads your scan. It stays on your computer until <i>you</i> paste it into Wuthering Tools.</span></li>
+            <li><span class="mark no"></span><span>Never reads your <b>User ID</b>. It skips that corner of the screen and blacks it out of any picture.</span></li>
+            <li><span class="mark no"></span><span>Never saves screenshots, unless you turn on “Save debug frames” yourself.</span></li>
           </ul>
         </div>
       </div>
@@ -92,43 +91,52 @@ import CopyCommand from "../components/CopyCommand.vue";
 .cols {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
+  gap: var(--gap);
 }
 @media (max-width: 820px) {
   .cols {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-.yes h3 {
+.cols .card {
+  padding: 20px 12px 12px;
+}
+.cols h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0 8px;
+}
+.yes h3 .tag {
   color: var(--ok);
 }
-.never {
-  background: var(--danger-soft);
-}
-.never h3 {
+.never h3 .tag {
   color: var(--danger);
 }
+/* Banded rows, like the stat rows on the app's echo card. */
 .plist {
   list-style: none;
   margin: 12px 0 0;
   padding: 0;
-  display: grid;
-  gap: 12px;
 }
 .card .plist li {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-columns: 20px minmax(0, 1fr);
   gap: 10px;
+  padding: 9px 8px;
   font-size: 0.97rem;
   color: var(--fg);
+  border-radius: 1px;
 }
-.plist svg {
-  margin-top: 3px;
+.plist li:nth-child(odd) {
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+.plist .mark {
+  margin-top: 8px;
 }
 .table-wrap {
   overflow-x: auto;
   margin-top: 36px;
-  border: 1px solid var(--line);
 }
 table {
   border-collapse: collapse;
@@ -138,10 +146,8 @@ table {
 }
 caption {
   text-align: left;
-  padding: 14px 16px;
+  padding: 0 0 12px;
   font: 600 1.05rem var(--display);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
 }
 th,
 td {
@@ -151,17 +157,19 @@ td {
   vertical-align: top;
 }
 th {
-  font: 600 0.75rem var(--mono);
-  letter-spacing: 0.1em;
+  font: 700 0.72rem var(--body);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
-  background: var(--surface);
+}
+td {
+  border-bottom-color: color-mix(in srgb, var(--line) 60%, transparent);
 }
 tr:last-child td {
   border-bottom: 0;
 }
 td code {
-  color: var(--accent);
+  color: var(--gold);
 }
 .verify {
   margin-top: 36px;

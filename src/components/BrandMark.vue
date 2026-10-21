@@ -3,7 +3,7 @@ import AppIcon from "./AppIcon.vue";
 </script>
 
 <template>
-  <a class="brand" href="#top"><AppIcon name="logo" :size="30" />Wavescan</a>
+  <a class="brand" href="#top"><AppIcon name="logo" :size="28" />Wavescan</a>
 </template>
 
 <style scoped>

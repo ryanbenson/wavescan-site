@@ -1,27 +1,29 @@
 /*
- * Wavescan site tokens. Dark is the default look (the game's world); light follows the
- * system or the visitor's toggle. Colours match the app: cyan is the main action, violet
- * the second colour, amber means "please check", gold is 5-star rarity.
+ * Wavescan site tokens, in the app's Echo Glass scheme. Dark is the default look (the game is
+ * dark-only); light is there for visitors who pick it with the toggle. Colours mean the same as
+ * in the app: white is the one main action, gold marks names, levels and labels, amber means
+ * "please check" and violet means "checked by you".
+ *
+ * Shapes follow the cube mark: sharp corners, a 24° slant on buttons, tags and marks, and gaps
+ * between panels instead of outlines.
  */
 :root {
-  --bg: #0a1016;
-  --bg-2: #0f1820;
-  --surface: #121d27;
-  --surface-2: #18252f;
-  --line: #24343f;
-  --fg: #e4ecf0;
-  --muted: #93a5b0;
-  --accent: #5cc8d6;
-  --accent-ink: #06151a;
-  --accent-soft: #5cc8d61f;
-  --gold: #e8c26a;
-  --amber: #f2b544;
-  --amber-soft: #f2b5441f;
-  --violet: #b9aef7;
+  --bg: #0f141b;
+  --bg-2: #121921;
+  --surface: #17202a;
+  --surface-2: #202b37;
+  --line: #2d3946;
+  --fg: #eef2f6;
+  --muted: #93a0ae;
+  --primary: #f1f3f6;
+  --on-primary: #0f141b;
+  --gold: #e5c76e;
+  --check: #f2955c;
+  --check-soft: #f2955c1f;
+  --checked: #b4a9ff;
   --danger: #f07a6a;
-  --danger-soft: #f07a6a1a;
-  --ok: #5fd39a;
-  --shadow: #0008;
+  --ok: #7fd3a0;
+  --shadow: #0009;
 
   --display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
   --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -32,53 +34,31 @@
   --step-1: 1.25rem;
   --step-3: clamp(1.9rem, 4vw, 2.6rem);
   --step-4: clamp(2.4rem, 6.2vw, 4.4rem);
-  --cut: 10px;
+  /* The mark's slant, and the corners: 2px on small parts, 4px on panels. */
+  --slant: 24deg;
+  --r-sm: 2px;
+  --r: 4px;
+  --gap: 6px;
 
   color-scheme: dark;
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg: #f2f6f8;
-    --bg-2: #e7eef2;
-    --surface: #ffffff;
-    --surface-2: #f4f8fa;
-    --line: #cbd7de;
-    --fg: #111a21;
-    --muted: #4f5f69;
-    --accent: #0f7482;
-    --accent-ink: #ffffff;
-    --accent-soft: #0f74821a;
-    --gold: #94700f;
-    --amber: #9a6200;
-    --amber-soft: #f2b5442e;
-    --violet: #5b4bc4;
-    --danger: #b3261e;
-    --danger-soft: #b3261e14;
-    --ok: #17784a;
-    --shadow: #1f293326;
-    color-scheme: light;
-  }
-}
-
 :root[data-theme="light"] {
-  --bg: #f2f6f8;
-  --bg-2: #e7eef2;
-  --surface: #ffffff;
-  --surface-2: #f4f8fa;
-  --line: #cbd7de;
-  --fg: #111a21;
-  --muted: #4f5f69;
-  --accent: #0f7482;
-  --accent-ink: #ffffff;
-  --accent-soft: #0f74821a;
-  --gold: #94700f;
-  --amber: #9a6200;
-  --amber-soft: #f2b5442e;
-  --violet: #5b4bc4;
+  --bg: #e3e8ee;
+  --bg-2: #dbe1e8;
+  --surface: #f8fafc;
+  --surface-2: #edf1f5;
+  --line: #ccd5df;
+  --fg: #111821;
+  --muted: #566271;
+  --primary: #111821;
+  --on-primary: #f8fafc;
+  --gold: #765c0f;
+  --check: #b4511c;
+  --check-soft: #b4511c1a;
+  --checked: #5a4bc2;
   --danger: #b3261e;
-  --danger-soft: #b3261e14;
-  --ok: #17784a;
+  --ok: #21764a;
   --shadow: #1f293326;
   color-scheme: light;
 }
@@ -106,14 +86,15 @@ img {
   max-width: 100%;
 }
 a {
-  color: var(--accent);
+  color: var(--fg);
+  text-decoration-color: var(--gold);
   text-underline-offset: 3px;
 }
 a:hover {
   text-decoration-thickness: 2px;
 }
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 h1,
@@ -126,7 +107,8 @@ h3 {
 }
 h2 {
   font-size: var(--step-3);
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 h3 {
   font-size: var(--step-1);
@@ -143,7 +125,7 @@ kbd {
 kbd {
   border: 1px solid var(--line);
   border-bottom-width: 2px;
-  border-radius: 4px;
+  border-radius: var(--r-sm);
   padding: 0.05em 0.4em;
   background: var(--surface-2);
 }
@@ -171,7 +153,6 @@ kbd {
 }
 .section {
   padding-block: clamp(56px, 9vw, 104px);
-  border-top: 1px solid var(--line);
 }
 .sec-head {
   display: grid;
@@ -179,21 +160,23 @@ kbd {
   margin-bottom: clamp(28px, 5vw, 48px);
   max-width: 720px;
 }
+/* Section label: tracked gold capitals, then a hairline to the edge, like the official game site. */
 .eyebrow {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 14px;
 }
-.eyebrow::before {
+.eyebrow::after {
   content: "";
-  width: 22px;
+  flex: 1;
   height: 1px;
-  background: currentColor;
+  background: var(--line);
 }
 .lede {
   color: var(--muted);
@@ -220,13 +203,15 @@ kbd {
   color: var(--danger);
 }
 .warn {
-  color: var(--amber);
+  color: var(--check);
 }
 
 /* ---------- buttons ---------- */
+/* Secondary buttons are a hairline. The one main action is a slanted fill behind upright text. */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
   min-height: 48px;
   padding: 0 1.25rem;
@@ -235,45 +220,47 @@ kbd {
   font-size: 1rem;
   letter-spacing: 0.02em;
   text-decoration: none;
-  border: 0;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: none;
   cursor: pointer;
   position: relative;
-  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
   transition:
-    transform 0.15s,
-    filter 0.15s,
-    background 0.15s;
+    border-color 0.15s,
+    color 0.15s;
 }
 .btn-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
+  isolation: isolate;
+  color: var(--on-primary);
+  padding: 0 1.9rem;
 }
-.btn-primary:hover {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
-}
-/* Outlined: the clipped shape is the line colour, an inset layer is the page colour. */
-.btn-ghost {
-  background: var(--line);
-  color: var(--fg);
-}
-.btn-ghost::before {
+.btn-primary::before {
   content: "";
   position: absolute;
-  inset: 1px;
-  background: var(--bg);
-  clip-path: inherit;
+  inset: 0 10px;
+  background: var(--primary);
+  transform: skewX(var(--slant));
+  border-radius: 1px;
+  z-index: -1;
+  transition: inset 0.18s;
 }
-.btn-ghost > * {
-  position: relative;
+.btn-primary:hover::before {
+  inset: 0 6px;
+}
+.btn-ghost {
+  color: var(--fg);
+  border-color: var(--line);
 }
 .btn-ghost:hover {
-  background: var(--accent);
+  border-color: var(--muted);
 }
 .btn[aria-disabled="true"] {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
+}
+.btn[aria-disabled="true"]::before {
+  inset: 0 10px;
 }
 .cta-row {
   display: flex;
@@ -281,33 +268,22 @@ kbd {
   gap: 12px;
 }
 
-/* ---------- frames, cards, labels ---------- */
-/* A panel with the scan-bracket corners from the app icon. */
-.frame {
+/* ---------- panels, cards, labels ---------- */
+/* A plain panel. Panels sit on the page with a gap between them; borders are kept for warnings. */
+.panel {
   position: relative;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border-radius: var(--r);
 }
-.frame::before,
-.frame::after {
+/* The gold line on top of the one panel in a group that matters most. */
+.panel.lead::before {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--accent);
-  pointer-events: none;
-}
-.frame::before {
-  top: -1px;
-  left: -1px;
-  border-right: 0;
-  border-bottom: 0;
-}
-.frame::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: 0;
-  border-top: 0;
+  left: 0;
+  top: 0;
+  width: 46px;
+  height: 2px;
+  background: var(--gold);
 }
 .card {
   padding: 20px;
@@ -321,22 +297,45 @@ kbd {
   color: var(--muted);
   font-size: 0.95rem;
 }
+/* Slanted outline tag. The word goes inside; the slanted shape is drawn behind it. */
+.tag,
+.flag {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.05rem 0.8rem;
+  font: 600 0.72rem var(--body);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.tag::before,
+.flag::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px;
+  border: 1px solid currentColor;
+  transform: skewX(var(--slant));
+  opacity: 0.85;
+  z-index: -1;
+}
 /* The app's amber "please check" label. */
 .flag {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--amber);
-  border: 1px solid var(--amber);
-  padding: 0 0.35rem;
+  color: var(--check);
   vertical-align: 1px;
 }
-.tag {
-  font: 600 0.68rem var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
-  border: 1px solid currentColor;
+.flag::before {
+  background: var(--check-soft);
+}
+/* A small slanted status mark. Always next to words that say the same thing. */
+.mark {
+  display: inline-block;
+  flex: none;
+  width: 14px;
+  height: 9px;
+  background: currentColor;
+  transform: skewX(var(--slant));
 }
 
 /* ---------- open/close lists (troubleshooting, FAQ) ---------- */
@@ -349,7 +348,7 @@ kbd {
 .qa summary {
   cursor: pointer;
   list-style: none;
-  padding: 16px 36px 16px 0;
+  padding: 16px 40px 16px 0;
   font-weight: 700;
   position: relative;
 }
@@ -357,16 +356,21 @@ kbd {
   display: none;
 }
 .qa summary::after {
-  content: "+";
+  content: "";
   position: absolute;
-  right: 6px;
-  top: 12px;
-  font: 400 1.5rem var(--mono);
-  color: var(--accent);
-  transition: transform 0.2s;
+  right: 8px;
+  top: 24px;
+  width: 12px;
+  height: 8px;
+  background: var(--muted);
+  transform: skewX(var(--slant));
+  transition:
+    width 0.2s,
+    background 0.2s;
 }
 .qa details[open] summary::after {
-  transform: rotate(45deg);
+  width: 20px;
+  background: var(--gold);
 }
 .qa .ans {
   padding: 0 0 18px;

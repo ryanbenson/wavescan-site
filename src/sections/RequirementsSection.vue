@@ -82,8 +82,8 @@ const resolutions = ["1920×1080", "2560×1440", "3840×2160", "1920×1200", "28
   height: 40px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line);
-  color: var(--accent);
+  border-radius: var(--r-sm);
+  color: var(--gold);
   background: var(--surface);
 }
 h3 {
@@ -101,6 +101,7 @@ h3 {
   font-size: 0.78rem;
   padding: 0.1rem 0.45rem;
   border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }

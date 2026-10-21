@@ -19,7 +19,7 @@ npm run build     # static files in dist/
 
 | Path | What it is |
 |---|---|
-| `src/style.css` | Colour and font tokens (dark default, light theme) and shared styles: buttons, frames, cards, FAQ lists |
+| `src/style.css` | Colour and font tokens (the app's Echo Glass scheme: dark by default, light behind the toggle) and shared styles: slanted buttons and tags, panels, section labels, FAQ lists |
 | `src/sections/` | One component per page section, in page order in `src/App.vue` |
 | `src/components/` | Pieces used by sections: nav, footer, icons, the hero echo panel, the setup checker |
 | `src/links.ts` | Every outside link. **`discord` is empty until there's a public invite**; Discord buttons stay hidden until it's set |
