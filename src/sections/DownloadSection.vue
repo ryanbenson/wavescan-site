@@ -36,7 +36,6 @@ const downloads: { os: string; text: string; href: string | null }[] = [
           <span v-else class="btn btn-primary" aria-disabled="true"><span>Coming soon</span></span>
         </div>
       </div>
-      <p class="note">Can't wait? You can try early test builds and help us find problems. See <a href="#testers">Help us test</a>.</p>
     </div>
   </section>
 </template>

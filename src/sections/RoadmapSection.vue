@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import AppIcon from "../components/AppIcon.vue";
-import { releases, roadToV01 } from "../roadmap";
-
-const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as const;
+import { releases } from "../roadmap";
 </script>
 
 <template>
@@ -24,22 +21,6 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
           <p>{{ r.text }}</p>
         </li>
       </ol>
-
-      <div class="progress panel">
-        <div>
-          <h3>Road to v0.1</h3>
-          <p>What's left before the first public release. Updated as we go.</p>
-        </div>
-        <ul class="checks">
-          <li v-for="t in roadToV01" :key="t.text" :class="t.state">
-            <span class="box" :title="stateLabel[t.state]"><AppIcon v-if="t.state === 'done'" name="check" :size="12" /></span>
-            <span>
-              <span class="sr">{{ stateLabel[t.state] }}: </span>{{ t.text }}
-              <small v-if="t.detail">{{ t.detail }}</small>
-            </span>
-          </li>
-        </ul>
-      </div>
     </div>
   </section>
 </template>
@@ -124,75 +105,5 @@ const stateLabel = { done: "Done", doing: "In progress", todo: "To do" } as cons
     top: 8px;
     width: 20px;
   }
-}
-.progress {
-  margin-top: 44px;
-  padding: 24px;
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 28px;
-}
-@media (max-width: 820px) {
-  .progress {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-.progress h3 {
-  font-size: 1.15rem;
-}
-.progress > div > p {
-  color: var(--muted);
-  margin-top: 8px;
-  font-size: 0.95rem;
-}
-.checks {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-  font-size: 0.96rem;
-}
-.checks li {
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
-  gap: 10px;
-  align-items: start;
-}
-.box {
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid var(--line);
-  margin-top: 3px;
-  border-radius: var(--r-sm);
-  display: grid;
-  place-items: center;
-}
-.done .box {
-  background: var(--ok);
-  border-color: var(--ok);
-  color: var(--bg);
-}
-.doing .box {
-  border-color: var(--check);
-}
-.doing .box::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--check);
-}
-small {
-  display: block;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 </style>
