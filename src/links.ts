@@ -5,8 +5,6 @@ export const links = {
   repo,
   releases: `${repo}/releases`,
   issues: `${repo}/issues`,
-  testerBuild: `${repo}/releases/tag/tester-build`,
-  testingGuide: `${repo}/blob/main/docs/testing-guide.md`,
   securityReport: `${repo}/security/advisories/new`,
   wutheringTools: "https://wutheringtools.com",
   fairPlay: "https://wutheringwaves.kurogames.com/en/main/news/detail/742",

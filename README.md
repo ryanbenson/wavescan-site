@@ -23,7 +23,7 @@ npm run build     # static files in dist/
 | `src/sections/` | One component per page section, in page order in `src/App.vue` |
 | `src/components/` | Pieces used by sections: nav, footer, icons, the hero echo panel, the setup checker |
 | `src/links.ts` | Every outside link. **`discord` is empty until there's a public invite**; Discord buttons stay hidden until it's set |
-| `src/roadmap.ts` | The roadmap and the "Road to v0.1" checklist. Keep it in step with the app's `docs/roadmap.md` |
+| `src/roadmap.ts` | The roadmap. Keep it in step with the app's `docs/roadmap.md` |
 | `src/compat.ts` | The "Will it work for me?" rules, with tests in `compat.spec.ts` |
 | `src/sections/DownloadSection.vue` | Download buttons. Set each `href` when the first signed release ships |
 

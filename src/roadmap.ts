@@ -18,20 +18,3 @@ export const releases: Release[] = [
   { version: "Later", title: "More players", text: "More game languages and ultrawide (21:9) screens." },
 ];
 
-export type TaskState = "done" | "doing" | "todo";
-
-export interface Task {
-  state: TaskState;
-  text: string;
-  detail?: string;
-}
-
-/** What's left before the first public release. */
-export const roadToV01: Task[] = [
-  { state: "done", text: "Echo reading on Windows", detail: "Every field correct in our test scans" },
-  { state: "done", text: "Watch mode, Auto mode and the review screen" },
-  { state: "doing", text: "Testing on Mac", detail: "Waiting for a tester with an Apple Silicon Mac" },
-  { state: "done", text: "Import page on Wuthering Tools" },
-  { state: "todo", text: "Signed downloads and network settings" },
-  { state: "todo", text: "Closed beta with players on many screen sizes" },
-];
