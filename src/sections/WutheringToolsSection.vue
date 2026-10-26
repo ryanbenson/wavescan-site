@@ -35,7 +35,7 @@ const nodes = [
       <div class="points">
         <div>
           <h3>One click to import</h3>
-          <p>Copy your scan, open the Wuthering Tools import page and press <span class="ui">Paste from scanner</span>. Saving a file you can drag in is coming soon.</p>
+          <p>Copy your scan, open the Wuthering Tools import page and press <span class="ui">Paste from scanner</span>.</p>
         </div>
         <div>
           <h3>You stay in control</h3>

@@ -15,7 +15,7 @@ import { releases } from "../roadmap";
         <li v-for="r in releases" :key="r.version" :class="{ now: r.current }">
           <span class="pin"></span>
           <div class="ver">
-            {{ r.version }}<span v-if="r.current" class="tag">In testing</span>
+            {{ r.version }}<span v-if="r.current" class="tag">Out now</span>
           </div>
           <h3>{{ r.title }}</h3>
           <p>{{ r.text }}</p>

@@ -22,10 +22,10 @@ npm run build     # static files in dist/
 | `src/style.css` | Colour and font tokens (the app's Echo Glass scheme: dark by default, light behind the toggle) and shared styles: slanted buttons and tags, panels, section labels, FAQ lists |
 | `src/sections/` | One component per page section, in page order in `src/App.vue` |
 | `src/components/` | Pieces used by sections: nav, footer, icons, the hero echo panel, the setup checker |
-| `src/links.ts` | Every outside link. **`discord` is empty until there's a public invite**; Discord buttons stay hidden until it's set |
+| `src/links.ts` | Every outside link. **`discord` is empty until there's a public invite**; the Discord card in the Report section stays hidden until it's set |
 | `src/roadmap.ts` | The roadmap. Keep it in step with the app's `docs/roadmap.md` |
 | `src/compat.ts` | The "Will it work for me?" rules, with tests in `compat.spec.ts` |
-| `src/sections/DownloadSection.vue` | Download buttons. Set each `href` when the first signed release ships |
+| `src/sections/DownloadSection.vue` | Download buttons. Each opens the latest GitHub release (`links.latestRelease`) |
 
 ## Writing for the site
 

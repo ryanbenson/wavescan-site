@@ -7,7 +7,7 @@ export interface Release {
   version: string;
   title: string;
   text: string;
-  /** The release being worked on now. */
+  /** The newest release, out now. */
   current?: boolean;
 }
 
