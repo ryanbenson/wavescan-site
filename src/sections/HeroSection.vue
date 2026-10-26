@@ -8,7 +8,7 @@ import HeroMark from "../components/HeroMark.vue";
     <HeroMark />
     <div class="wrap">
       <div>
-        <span class="tag status"><i></i>In testing · v0.1 coming soon</span>
+        <span class="tag status"><i></i>Out now · v0.1 for Windows and Mac</span>
         <h1 id="hero-title">Scan your echoes.<em>Skip the typing.</em></h1>
         <p class="lede">
           Wavescan is a free app for Windows and Mac. It reads the echoes in your Wuthering Waves bag and sends them to Wuthering Tools in one click. No more typing
@@ -45,14 +45,14 @@ import HeroMark from "../components/HeroMark.vue";
   }
 }
 .status {
-  color: var(--check);
+  color: var(--gold);
   font-size: 0.8rem;
   padding-block: 0.25rem;
   max-width: 100%;
   white-space: normal;
 }
 .status::before {
-  background: var(--check-soft);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
 }
 .status i {
   width: 10px;
@@ -60,12 +60,6 @@ import HeroMark from "../components/HeroMark.vue";
   flex: none;
   background: currentColor;
   transform: skewX(var(--slant));
-  animation: blink 1.6s steps(2) infinite;
-}
-@keyframes blink {
-  50% {
-    opacity: 0.25;
-  }
 }
 h1 {
   font-size: var(--step-4);

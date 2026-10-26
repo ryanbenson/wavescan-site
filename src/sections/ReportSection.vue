@@ -16,15 +16,16 @@ import { links } from "../links";
           <p>Open <span class="ui">Help &amp; feedback → Report a problem</span>, or press <span class="ui">Report</span> on an echo. Choose what went wrong and add a note.</p>
           <p><span class="ui">Open on GitHub</span> opens a new issue with the report filled in. Nothing is posted until you press <span class="ui">Submit</span>.</p>
           <p>The report includes the version, screen size and what Wavescan read. It never includes pictures or your User ID.</p>
+          <p>Want to add a picture? Use <span class="ui">Copy picture</span> on the Diagnostics screen. Your User ID is already blacked out. Paste it into your report.</p>
           <a class="btn btn-ghost" :href="links.issues" rel="noopener"><span>See open issues on GitHub</span></a>
         </div>
-        <div class="card panel">
+        <!-- Hidden until links.discord has a public invite. -->
+        <div v-if="links.discord" class="card panel">
           <h3>No GitHub account?</h3>
-          <p>Press <span class="ui">Copy text</span> in the report window and share it with the testers on Discord.</p>
-          <p>Want to add a picture? Use <span class="ui">Copy picture</span> on the Diagnostics screen. Your User ID is already blacked out. Paste it into your report.</p>
-          <a v-if="links.discord" class="btn btn-ghost" :href="links.discord" rel="noopener"><span>Join the Discord</span></a>
+          <p>Press <span class="ui">Copy text</span> in the report window and share it with us on Discord.</p>
+          <a class="btn btn-ghost" :href="links.discord" rel="noopener"><span>Join the Discord</span></a>
         </div>
-        <div class="card panel lead security">
+        <div class="card panel lead" :class="{ security: links.discord }">
           <h3>Found a security problem?</h3>
           <p>
             Please don't post it in public. Use GitHub's private reporting instead: the <span class="ui">Security</span> tab →
@@ -58,6 +59,7 @@ import { links } from "../links";
   width: max-content;
   max-width: 100%;
 }
+/* Spans the row under the two cards when the Discord card shows; sits beside the first card otherwise. */
 .security {
   grid-column: 1 / -1;
 }

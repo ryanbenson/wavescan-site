@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import AppIcon from "../components/AppIcon.vue";
+import { links } from "../links";
 
-/**
- * Until the first signed release, the buttons say "Coming soon". When v0.1 ships, set `href`
- * to the matching file on the GitHub Releases page.
- */
-const downloads: { os: string; text: string; href: string | null }[] = [
+/** Each button opens the newest release on GitHub, where the installer for each system is listed. */
+const downloads: { os: string; text: string; href: string }[] = [
   {
     os: "Windows",
     text: "Windows 10 or 11, 64-bit. On Windows 10, a yellow border shows around the game while Wavescan reads it. That's normal.",
-    href: null,
+    href: links.latestRelease,
   },
   {
     os: "Mac",
     text: "macOS 13 or newer, on a Mac with an Apple chip (M1 or newer). Wuthering Waves doesn't run on Intel Macs.",
-    href: null,
+    href: links.latestRelease,
   },
 ];
 </script>
@@ -25,15 +23,14 @@ const downloads: { os: string; text: string; href: string | null }[] = [
       <div class="sec-head">
         <span class="eyebrow">Download</span>
         <h2 id="dl-title">Get Wavescan</h2>
-        <p class="lede">Wavescan is still being tested. Signed downloads will appear here when version 0.1 is ready.</p>
+        <p class="lede">Free, signed downloads for Windows and Mac. Each button opens the latest release on GitHub: get the <code>.exe</code> for Windows or the <code>.dmg</code> for Mac.</p>
       </div>
       <div class="grid">
         <div v-for="d in downloads" :key="d.os" class="card panel">
           <AppIcon name="logo" :size="128" class="os-mark" />
           <h3>{{ d.os }}</h3>
           <p>{{ d.text }}</p>
-          <a v-if="d.href" class="btn btn-primary" :href="d.href" rel="noopener"><span>Download for {{ d.os }}</span></a>
-          <span v-else class="btn btn-primary" aria-disabled="true"><span>Coming soon</span></span>
+          <a class="btn btn-primary" :href="d.href" rel="noopener"><span>Download for {{ d.os }}</span></a>
         </div>
       </div>
     </div>
