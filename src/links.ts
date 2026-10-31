@@ -8,6 +8,7 @@ export const links = {
   issues: `${repo}/issues`,
   securityReport: `${repo}/security/advisories/new`,
   wutheringTools: "https://wutheringtools.com",
+  tacetLab: "https://dj12421.github.io/Tacet-Lab/?import=1",
   fairPlay: "https://wutheringwaves.kurogames.com/en/main/news/detail/742",
   /** Empty until there's a public invite. The Discord card is hidden while it's empty. */
   discord: "",

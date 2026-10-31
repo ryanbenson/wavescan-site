@@ -12,7 +12,7 @@ import ReportSection from "./sections/ReportSection.vue";
 import RequirementsSection from "./sections/RequirementsSection.vue";
 import RoadmapSection from "./sections/RoadmapSection.vue";
 import SafetySection from "./sections/SafetySection.vue";
-import WutheringToolsSection from "./sections/WutheringToolsSection.vue";
+import WorksWithSection from "./sections/WorksWithSection.vue";
 </script>
 
 <template>
@@ -23,7 +23,7 @@ import WutheringToolsSection from "./sections/WutheringToolsSection.vue";
     <FactStrip />
     <RequirementsSection />
     <HowItWorksSection />
-    <WutheringToolsSection />
+    <WorksWithSection />
     <SafetySection />
     <DownloadSection />
     <RoadmapSection />
