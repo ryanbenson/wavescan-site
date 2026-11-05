@@ -29,6 +29,6 @@ export const importApps: ImportApp[] = [
     href: links.tacetLab,
     about: "A free optimizer for comparing builds, working out damage and planning teams.",
     how: "Tacet Lab is adding Wavescan imports now. It takes the same scan, so there's nothing new to learn.",
-    ready: false,
+    ready: true,
   },
 ];
