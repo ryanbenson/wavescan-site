@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import AppIcon from "../components/AppIcon.vue";
+import { importApps } from "../apps";
 import { links } from "../links";
 
 const nodes = [
   { where: "In the game", title: "Bag → Echoes", text: "You open your echoes, like you always do.", main: false },
   { where: "On your computer", title: "Wavescan", text: "Reads each echo, set, level and who has it equipped. You check anything it wasn't sure about.", main: true },
-  { where: "In your browser", title: "Wuthering Tools", text: "Shows you what's new and spots duplicates before anything is saved.", main: false },
+  { where: "In your browser", title: "Your echo app", text: "Paste the scan into Wuthering Tools, Tacet Lab or another app that takes it.", main: false },
 ];
 </script>
 
 <template>
-  <section id="wuthering-tools" class="section" aria-labelledby="wt-title">
+  <section id="works-with" class="section" aria-labelledby="wt-title">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Works with Wuthering Tools</span>
+        <span class="eyebrow">Works with</span>
         <h2 id="wt-title">From your bag to your builds</h2>
-        <p class="lede">
-          Wavescan was made to fill your <a :href="links.wutheringTools" rel="noopener">Wuthering Tools</a> echo inventory, so you can plan builds with the echoes you
-          really have.
-        </p>
+        <p class="lede">One scan works in every app on this list, so you can plan builds with the echoes you really have, wherever you plan them.</p>
       </div>
 
       <ol class="flow">
@@ -32,18 +30,29 @@ const nodes = [
         </template>
       </ol>
 
+      <ul class="apps">
+        <li v-for="a in importApps" :key="a.name" class="app card panel">
+          <h3>
+            {{ a.name }}<span class="tag" :class="a.ready ? 'ready' : 'soon'">{{ a.ready ? "Works now" : "Coming soon" }}</span>
+          </h3>
+          <p>{{ a.about }}</p>
+          <p>{{ a.how }}</p>
+          <a class="btn btn-ghost" :href="a.href" rel="noopener"><span>Go to {{ a.name }}</span></a>
+        </li>
+      </ul>
+
       <div class="points">
         <div>
-          <h3>One click to import</h3>
-          <p>Copy your scan, open the Wuthering Tools import page and press <span class="ui">Paste from scanner</span>.</p>
+          <h3>One scan, every app</h3>
+          <p>Each app takes the same scan. Copy it once in Wavescan and paste it wherever you like.</p>
         </div>
         <div>
-          <h3>You stay in control</h3>
-          <p>Wuthering Tools only adds echoes. It never wipes your inventory. Echoes below +25 are skipped unless you choose to include them.</p>
+          <h3>You choose where it goes</h3>
+          <p>Wavescan never sends your scan anywhere. It only goes to an app when you paste it there.</p>
         </div>
         <div>
-          <h3>Same reader, both sides</h3>
-          <p>Wavescan uses the same echo-reading code as Wuthering Tools, so stats and names match. New echoes reach Wavescan through regular updates.</p>
+          <h3>Making a Wuthering Waves app?</h3>
+          <p>You can take Wavescan scans too, with no changes on our side. <a :href="links.issues" rel="noopener">Open an issue on GitHub</a> and we'll add you here.</p>
         </div>
       </div>
     </div>
@@ -93,6 +102,37 @@ const nodes = [
   .link svg {
     transform: rotate(90deg);
   }
+}
+.apps {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--gap);
+}
+.app {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.app h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  font-size: 1.2rem;
+}
+.app .btn {
+  margin-top: 6px;
+  width: max-content;
+  max-width: 100%;
+}
+.ready {
+  color: var(--ok);
+}
+.soon {
+  color: var(--check);
 }
 .points {
   display: grid;

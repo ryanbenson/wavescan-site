@@ -11,7 +11,7 @@ import HeroMark from "../components/HeroMark.vue";
         <span class="tag status"><i></i>Out now · v0.1 for Windows and Mac</span>
         <h1 id="hero-title">Scan your echoes.<em>Skip the typing.</em></h1>
         <p class="lede">
-          Wavescan is a free app for Windows and Mac. It reads the echoes in your Wuthering Waves bag and sends them to Wuthering Tools in one click. No more typing
+          Wavescan is a free app for Windows and Mac. It reads the echoes in your Wuthering Waves bag so you can bring them into Wuthering Tools, Tacet Lab and other community apps in one paste. No more typing
           in substats one by one.
         </p>
         <div class="cta-row">

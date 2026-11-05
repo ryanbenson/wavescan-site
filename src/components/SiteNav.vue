@@ -7,7 +7,7 @@ const { theme, toggle } = useTheme();
 
 const items = [
   { href: "#how", label: "How it works" },
-  { href: "#wuthering-tools", label: "Wuthering Tools" },
+  { href: "#works-with", label: "Works with" },
   { href: "#safety", label: "Safety" },
   { href: "#roadmap", label: "Roadmap" },
   { href: "#help", label: "Help" },

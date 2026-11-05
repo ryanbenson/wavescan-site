@@ -28,7 +28,7 @@ import CopyCommand from "../components/CopyCommand.vue";
           <ul class="plist">
             <li><span class="mark no"></span><span>Never reads or changes the game's memory or files. Nothing is injected into the game.</span></li>
             <li><span class="mark no"></span><span>Never collects your data. No accounts, no analytics, no tracking.</span></li>
-            <li><span class="mark no"></span><span>Never uploads your scan. It stays on your computer until <i>you</i> paste it into Wuthering Tools.</span></li>
+            <li><span class="mark no"></span><span>Never uploads your scan. It stays on your computer until <i>you</i> paste it into an app like Wuthering Tools.</span></li>
             <li><span class="mark no"></span><span>Never reads your <b>User ID</b>. It skips that corner of the screen and blacks it out of any picture.</span></li>
             <li><span class="mark no"></span><span>Never saves screenshots, unless you turn on “Save debug frames” yourself.</span></li>
           </ul>

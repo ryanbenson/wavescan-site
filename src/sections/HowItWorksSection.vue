@@ -86,8 +86,8 @@ function onKey(e: KeyboardEvent, index: number) {
           </li>
           <li>
             <div>
-              <h3>Send to Wuthering Tools</h3>
-              <p>Press <span class="ui">Copy scan for Wuthering Tools</span> and paste it on the import page.</p>
+              <h3>Send it to your app</h3>
+              <p>Copy your scan and paste it on the import page of Wuthering Tools, Tacet Lab or another app that takes Wavescan scans.</p>
             </div>
           </li>
         </ol>
