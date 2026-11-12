@@ -1,5 +1,5 @@
 <script setup lang="ts">
-export type IconName = "check" | "x" | "warn" | "arrow" | "lang" | "screen" | "hdr" | "bag" | "sun" | "moon" | "logo";
+export type IconName = "check" | "x" | "warn" | "arrow" | "lang" | "screen" | "hdr" | "bag" | "sun" | "moon" | "discord" | "logo";
 
 withDefaults(defineProps<{ name: IconName; size?: number; width?: number }>(), { size: 18, width: undefined });
 </script>

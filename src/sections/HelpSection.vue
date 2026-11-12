@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { links } from "../links";
+</script>
+
 <template>
   <section id="help" class="section" aria-labelledby="help-title">
     <div class="wrap">
@@ -79,6 +83,7 @@
           <p class="cap">Each box should sit on its text. Your User ID is blacked out.</p>
         </div>
       </div>
+      <p class="more">Still stuck? <a :href="links.discord" rel="noopener">Ask on the Wavescan Discord</a>.</p>
     </div>
   </section>
 </template>
@@ -94,6 +99,10 @@
   .grid {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+.more {
+  margin-top: 28px;
+  color: var(--muted);
 }
 .diag {
   padding: 22px;

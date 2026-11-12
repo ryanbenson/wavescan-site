@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppIcon from "./AppIcon.vue";
 import BrandMark from "./BrandMark.vue";
+import { links } from "../links";
 import { useTheme } from "../theme";
 
 const { theme, toggle } = useTheme();
@@ -24,7 +25,10 @@ const items = [
           <li v-for="item in items" :key="item.href"><a :href="item.href">{{ item.label }}</a></li>
         </ul>
       </nav>
-      <button class="theme-btn" type="button" :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'" @click="toggle">
+      <a class="icon-btn" :href="links.discord" rel="noopener" aria-label="Join the Wavescan Discord" title="Discord">
+        <AppIcon name="discord" />
+      </a>
+      <button class="icon-btn" type="button" :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'" @click="toggle">
         <AppIcon :name="theme === 'dark' ? 'sun' : 'moon'" />
       </button>
       <a class="btn btn-primary" href="#download"><span>Get Wavescan</span></a>
@@ -69,7 +73,7 @@ ul a:hover {
   min-height: 40px;
   font-size: 0.92rem;
 }
-.theme-btn {
+.icon-btn {
   background: none;
   border: 1px solid var(--line);
   color: var(--muted);
@@ -80,7 +84,11 @@ ul a:hover {
   cursor: pointer;
   border-radius: var(--r-sm);
 }
-.theme-btn:hover {
+/* Keep the two icon buttons closer together than the rest of the bar. */
+.icon-btn + .icon-btn {
+  margin-left: -10px;
+}
+.icon-btn:hover {
   color: var(--fg);
   border-color: var(--muted);
 }
@@ -88,7 +96,8 @@ ul a:hover {
   nav {
     display: none;
   }
-  .theme-btn {
+  /* With the section links hidden, push the icons and button to the right. */
+  nav + .icon-btn {
     margin-left: auto;
   }
 }
