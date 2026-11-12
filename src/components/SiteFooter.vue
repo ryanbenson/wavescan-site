@@ -13,6 +13,7 @@ import { links } from "../links";
           <a :href="links.repo" rel="noopener">Source code</a>
           <a :href="links.releases" rel="noopener">Releases</a>
           <a :href="links.issues" rel="noopener">Issues</a>
+          <a :href="links.discord" rel="noopener">Discord</a>
           <a v-for="a in importApps" :key="a.name" :href="a.href" rel="noopener">{{ a.name }}</a>
           <a href="#safety">Privacy</a>
         </nav>
